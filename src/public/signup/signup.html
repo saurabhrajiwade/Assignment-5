@@ -1,0 +1,115 @@
+
+<div class="container" >
+<h3>Sign Up to get our Newsletter Weekly !!</h3>
+
+<br>
+<form name="signup" ng-controller="signupController as infoctrl" novalidate>
+
+  <div class="input-group">
+      <span class="input-group-addon">
+          <i class="glyphicon glyphicon-user"></i></span>
+      <input type="text" style="color:black" name="firstname" placeholder="Your First Name"
+      ng-model="infoctrl.firstname"
+      required
+      maxlength="10">
+      <span ng-if="signup.firstname.$error.required
+          && signup.firstname.$touched"> First Name is required</span>
+
+  </div>
+
+  <br>
+
+
+  <div class="input-group">
+
+      <span class="input-group-addon">
+          <i class="glyphicon glyphicon-user"></i></span>
+      <input type="text" style="color:black" name="lastname" placeholder="Your Last Name"
+      ng-model="infoctrl.lastname"
+      required
+      maxlength="10"
+      >
+      <span ng-if="signup.lastname.$error.required
+          && signup.lastname.$touched"> Last Name is required</span>
+
+  </div>
+
+  <br>
+
+  <div class="input-group">
+      <span class="input-group-addon">
+          <i class="glyphicon glyphicon-envelope"></i></span>
+      <input type="email" style="color:black" name="email" placeholder="Your Email Address"
+      required
+      ng-model="infoctrl.email"
+      >
+      <span ng-if="signup.email.$error.required
+          && signup.email.$touched"> Email is required </span>
+      <span ng-if="signup.email.$touched
+              && !(signup.email.$error.required)
+              && signup.email.$invalid"> Should look like "abc@abc" </span>
+
+  </div>
+
+  <br>
+
+  <div class="input-group">
+      <span class="input-group-addon">
+          <i class="glyphicon glyphicon-phone"></i></span>
+      <input type="text" style="color:black" name="phoneNumber" placeholder="Your Phone Number"
+      ng-model="infoctrl.phoneNumber"
+      required
+      pattern="(\d{3})-(\d{3})-(\d{4})"
+      >
+      <span ng-if="signup.phoneNumber.$error.required
+          && signup.phoneNumber.$touched"> Phone Number is required</span>
+          <span ng-if="signup.phoneNumber.$touched &&
+             signup.phoneNumber.$invalid"> Required Format: xxx-xxx-xxxx</span>
+
+  </div>
+
+  <br>
+
+
+  <div class="input-group">
+      <span class="input-group-addon">
+          <i class="glyphicon glyphicon-ice-lolly-tasted"></i></span>
+      <input type="text" style="color:black" name="favoriteMenu" placeholder="Favorite Menu Number"
+      ng-model="infoctrl.favoriteMenu"
+      required maxlength="3">
+      <span ng-if="signup.favoriteMenu.$error.required
+          && signup.favoriteMenu.$touched"> Favorite menu is required</span>
+      <span ng-if="infoctrl.isMenuItemNotFound">
+        No such menu number exists.
+      </span>
+
+
+  </div>
+
+  <br>
+
+
+
+  <div>
+    <button id="submit" type="button" name="button" class="btn btn-primary"
+    ng-disabled="signup.firstname.$invalid ||
+    signup.lastname.$invalid ||
+    signup.email.$invalid ||
+    signup.phoneNumber.$invalid ||
+    signup.favoriteMenu.$invalid"
+    ng-click="infoctrl.register()">Register</button>
+
+  </div>
+
+  <div ng-if="infoctrl.isRegistered">
+    <h2>You information has been saved.</h2>
+  </div>
+
+
+
+
+
+
+
+</form>
+</div>

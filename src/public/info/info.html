@@ -1,0 +1,36 @@
+<div class="container">
+
+  <div id="not-registered" ng-if="!infoctrl.isRegistered"
+    style="padding:100px; text-align:center">
+    <h2>Not Signed Up Yet, <a ui-sref="public.signup">Sign Up Now!</a></h2>
+  </div>
+
+  <div ng-if="infoctrl.isRegistered">
+    <div id="user-info">
+      <h3>User Information </h3>
+      <br>
+      <div>
+        Name : {{infoctrl.user.firstName }} {{infoctrl.user.lastName}} <br>
+      </div>
+      <div>
+        Email : {{infoctrl.user.email}} <br>
+      </div>
+      <div>
+        Phone : {{infoctrl.user.phone}} <br>
+      </div>
+
+      <div>
+        <p>Favourite Dish : </p>
+        <h3>{{infoctrl.menuItems.name}} </h3>
+        <p>{{infoctrl.menuItems.description}}.</p> <br>
+        <img class="img-responsive" width="250" height="150"
+          ng-src="{{infoctrl.imagePath}}/images/{{infoctrl.menuItems.short_name}}.jpg"
+          alt="{{infoctrl.menuItems.name}}"><br>
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
